@@ -51,8 +51,5 @@ public class MTest {
 		// range
 		IntStream range01 = IntStream.range(1, 5);
 		range01.forEachOrdered((i) -> System.out.print(i + " "));
-	
-		IntStream range02 = IntStream.range(1, 10);
-		range02.for
 	}
 }
