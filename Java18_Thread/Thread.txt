@@ -1,0 +1,7 @@
+Program : 응용S/W (.exe / .app) -> 실행할 수 있는 파일
+Process : 프로그램이 실행되고 있는 객체 (메모리에 올라간 객체)
+Thread  : 하나의 Process에서 여러개의 메소드 단위로 실행되는 모듈
+
+java에서 메소드 단위로 프로그램을 실행하는 방법 2가지
+1. Runnable을 implements 한다. (단순한 Thread화)
+2. Tread를 extends 한다. (여러개의 Thread 기능을 사용해야 할 때)
