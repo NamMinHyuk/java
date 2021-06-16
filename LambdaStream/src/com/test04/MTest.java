@@ -1,7 +1,9 @@
 package com.test04;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -9,7 +11,31 @@ public class MTest {
 	
 	public static void main(String[] args) {
 		// createStream();
-		craeteCollection();
+		// craeteCollection();
+		pipeline();
+	}
+
+	private static void pipeline() {
+		List<String> qclass = Arrays.asList("홍길동", "이순신", "김선달", "조세호", "강호동", "유재석", "신동엽", "펭수");
+		List<String> dong = qclass.stream().filter(name -> name.contains("동")).sorted().collect(Collectors.toList());
+		
+		System.out.println(dong);
+		
+		List<String> two = qclass.stream().filter(name -> name.length() == 2).collect(Collectors.toCollection(ArrayList::new));
+		
+		two.forEach(System.out::println);
+		
+		// qclass에서 "동"이라는 글자를 포함한 사람들을 찾고,
+		// 이름 마지막 글자를 *로 바꾸고,
+		// 정렬하고, List로 담고, forEach로 출력하자.
+		List<String> answer = qclass.stream().filter(name -> name.contains("동")).map(w -> w.replace(w.substring(w.length()-1,w.length()),"*")).sorted().collect(Collectors.toList());
+		answer.forEach(System.out::println);
+		
+		System.out.println(qclass.stream().filter(name->name.contains("동")).count());
+		
+		// lotto
+		List<Integer> lotto = Stream.generate(()->(int)(Math.random()*45)+1).distinct().limit(6).sorted().collect(Collectors.toList());
+		lotto.forEach((i) -> System.out.print(i + " "));
 	}
 
 	private static void craeteCollection() {
